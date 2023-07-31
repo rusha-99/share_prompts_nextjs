@@ -5,11 +5,12 @@ const Home = () => {
     <section className="w-full flex-center flex-col ">
       <h1 className="head_text text-center">
         Discover & Share
-        <br className="max-md:hidden"/>
+        <br className="max-md:aria-hidden:"/>
         <span className="orange_gradient text-center">AI-Powered Prompts</span>
       </h1>
       <p className="desc text-center">
-        Promptopia is an AI-powered prompt generator that helps you to create and share creative prompts.
+        Promptopia is an AI-powered prompt generator that helps you to create
+        and share creative prompts.
       </p>
       <Feed />
     </section>
