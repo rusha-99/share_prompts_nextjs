@@ -8,6 +8,8 @@ const Nav = () => {
   const isUserLoggedIn = true
 
   const [providers, setProviders] = useState(null)
+  const [toggleDropDown, SetToggleDropdown] = useState(false);
+
 
   useEffect(() => {
     const setProviders = async () => {
@@ -78,12 +80,41 @@ const Nav = () => {
               height={37}
               className="rounded-full"
               alt="profile"
-              onClick={()=>{}}
-            ></Image>
+              onClick={() => SetToggleDropdown((prev) => !prev)}
+            />
+
+            {toggleDropDown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown_link"
+                  onClick={() => SetToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+                <Link
+                  href="/create-prompt"
+                  className="dropdown_link"
+                  onClick={() => SetToggleDropdown(false)}
+                >
+                  Create Prompt
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    SetToggleDropdown(false);
+                    signOut();
+                  }}
+                  className="mt-5 w-full black_btn"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         ) : (
-            <>
-                {providers &&
+          <>
+            {providers &&
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
@@ -93,7 +124,8 @@ const Nav = () => {
                 >
                   Sign In
                 </button>
-              ))}</>
+              ))}
+          </>
         )}
       </div>
     </nav>
