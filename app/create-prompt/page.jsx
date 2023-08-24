@@ -5,9 +5,13 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Form from '@components/Form'
 import { set } from 'mongoose'
+import { useSession } from 'next-auth/react'
 
 
 const CreatePrompt = () => {
+
+  const router = useRouter()
+  const { data: session } = useSession()
 
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
@@ -30,7 +34,7 @@ const CreatePrompt = () => {
         })
       })
       if(response.ok) {
-        Router.push('/')
+        router.push('/')
       } 
     }catch (error) {
       console.log(error)
