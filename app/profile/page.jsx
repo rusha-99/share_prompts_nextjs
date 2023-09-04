@@ -7,6 +7,21 @@ import { useSession } from 'next-auth/react'
 import Profile from "@components/profile"
 
 const MyProfile = () => {
+
+
+   
+
+    useEffect(() => {
+         const fetchPosts = async () => {
+           const response = await fetch('/api/users/${session?.user.id}/posts')
+           const data = await response.json()
+
+           setAllPosts(data)
+         }
+      fetchPosts()
+    }, [])
+
+
     const handleEdit = () => {
         
     }
